@@ -1,0 +1,23 @@
+body {
+    text-align: center;
+    background-color: grey;
+}
+
+div {
+    border: 2px solid white;
+    height: 100px;
+    width: 100px;
+}
+
+section {
+    width: 300px;
+    display: flex;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
