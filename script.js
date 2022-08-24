@@ -22,22 +22,23 @@ for (let i = 0; i < pBoxes.length; i++) {
             }
             box.classList.remove('null');
             counter++;
+            // x check
+            checkX();
+    
+            // y check
+            checkY();
+
+            // diagonal check
+            checkD();
+
+            if (win == true) {
+                alert('win');
+            }
         }
     })
 }
 
-// x check
-checkX();
-    
-// y check
-checkY();
 
-// diagonal check
-checkD();
-
-if (win == true) {
-    alert('win');
-}
 
 function checkX() {
     for (let a = 0; a < boxPosition.length; a++) {
