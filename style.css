@@ -1,25 +1,47 @@
-body {
+/* body {
     text-align: center;
     background-image: url(./BG_txture.jpeg);
     background-repeat: repeat;
+    margin: 0 auto;
 }
 
 main {
     border: 3px solid red;
-    margin: 0 5em;
+    margin: 0 auto;
+} */
 
+body {
+    background-image: url(./BG_txture.jpeg);
+    background-repeat: repeat;
+}
+
+header {
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+main {
+    display: grid;
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
 }
 
 div {
     border: 2px solid black;
-    height: 10em;
-    width: 10em;
+    height: 150px;
+    width: 150px;
 }
 
 section {
     width: 450px;
     display: flex;
-    border: 3px solid white;
+    /* border: 3px solid white; */
 }
 
 .red {
@@ -31,4 +53,5 @@ section {
 .blue {
     background-image: url(./blue_splat.png);
     background-size: cover;
+    opacity: .8;
 }

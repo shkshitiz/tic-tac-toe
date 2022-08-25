@@ -10,6 +10,9 @@ var boxPosition = []
 
 var winColor;
 
+var rScore = 0;
+var bScore = 0;
+
 for (let i = 0; i < pBoxes.length; i++) { 
     var boxes = pBoxes[i].querySelectorAll('div');
     boxPosition.push(boxes);
@@ -33,9 +36,12 @@ for (let i = 0; i < pBoxes.length; i++) {
             checkD('blue');
 
             if (winColor == 'red' || winColor == 'blue') {
+
                 alert(winColor + ' wins');
+                resetBox();
             } else if (counter >= 9) {
                 alert('tie');
+                resetBox();
             }
         }
     })
@@ -62,5 +68,14 @@ function checkY(color) {
 function checkD(color) {
     if ((boxPosition[0][0].className.includes(color) && boxPosition[1][1].className.includes(color) && boxPosition[2][2].className.includes(color)) || (boxPosition[0][2].className.includes(color) && boxPosition[1][1].className.includes(color) && boxPosition[2][0].className.includes(color))) {
         return (winColor = color);
+    }
+}
+
+function resetBox() {
+    for (let j = 0; j < 9; j++) {
+        var box = document.getElementById(j + 1);
+        box.classList.remove('red');
+        box.classList.remove('blue');
+        box.classList.add('null');
     }
 }
