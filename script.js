@@ -6,12 +6,13 @@ var counter = 0;
 
 var win = false;
 
-
 var boxPosition = []
+
+var winColor;
 
 for (let i = 0; i < pBoxes.length; i++) { 
     var boxes = pBoxes[i].querySelectorAll('div');
-    boxPosition.push(boxes);      // 
+    boxPosition.push(boxes);
     pBoxes[i].addEventListener('click', function(event) {
         let box = event.target;
         if (box.className.includes("null")) {
@@ -22,59 +23,44 @@ for (let i = 0; i < pBoxes.length; i++) {
             }
             box.classList.remove('null');
             counter++;
-            // x check
-            checkX();
-    
-            // y check
-            checkY();
+            checkX('red');
+            checkX('blue');
 
-            // diagonal check
-            checkD();
+            checkY('red');
+            checkY('blue');
 
-            if (win == true) {
-                alert('win');
+            checkD('red');
+            checkD('blue');
+
+            if (winColor == 'red' || winColor == 'blue') {
+                alert(winColor + ' wins');
+            } else if (counter >= 9) {
+                alert('tie');
             }
         }
     })
 }
 
 
-
-function checkX() {
+// x check
+function checkX(color) {
     for (let a = 0; a < boxPosition.length; a++) {
-        if (boxPosition[a][0].className.includes('red') && boxPosition[a][1].className.includes('red') && boxPosition[a][2].className.includes('red')) {
-            return (win = true);
+        if (boxPosition[a][0].className.includes(color) && boxPosition[a][1].className.includes(color) && boxPosition[a][2].className.includes(color)) {
+            return (winColor = color);
         }
     }
 }
-
-function checkY() {
+// y check
+function checkY(color) {
     for (let b = 0; b < boxPosition.length; b++) {
-        if (boxPosition[0][b].className.includes('red') && boxPosition[1][b].className.includes('red') && boxPosition[2][b].className.includes('red')) {
-            return (win = true);
+        if (boxPosition[0][b].className.includes(color) && boxPosition[1][b].className.includes(color) && boxPosition[2][b].className.includes(color)) {
+            return (winColor = color);
         }
     }
 }
-
-function checkD() {
-    if ((boxPosition[0][0].className.includes('red') && boxPosition[1][1].className.includes('red') && boxPosition[2][2].className.includes('red')) || (boxPosition[0][2].className.includes('red') && boxPosition[1][1].className.includes('red') && boxPosition[2][0].className.includes('red'))) {
-        return (win = true);
+// diagonal check
+function checkD(color) {
+    if ((boxPosition[0][0].className.includes(color) && boxPosition[1][1].className.includes(color) && boxPosition[2][2].className.includes(color)) || (boxPosition[0][2].className.includes(color) && boxPosition[1][1].className.includes(color) && boxPosition[2][0].className.includes(color))) {
+        return (winColor = color);
     }
 }
-
-
-
-// if (boxPosition[0][0].className.includes('red') && boxPosition[0][1].className.includes('red') && boxPosition[0][2].className.includes('red')) {
-//     result = 'red win';
-// } else if (boxPosition[0][0] && boxPosition[0][1] && boxPosition[0][2].className.includes('blue')){
-//     result = 'blue win';
-// }
-// console.log(result);
-
-// function clickBlue() {
-//     event.target
-// }
-
-// function clickRed() {
-
-// }
