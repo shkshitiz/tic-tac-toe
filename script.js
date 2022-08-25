@@ -1,17 +1,18 @@
 
 var pBoxes = document.querySelectorAll('section');
 // var boxes = pBoxes[i].querySelectorAll('div');
+var boxPosition = []
 
 var counter = 0;
 
 var win = false;
 
-var boxPosition = []
-
 var winColor;
 
-var rScore = 0;
-var bScore = 0;
+var redScore = 0;
+var blueScore = 0;
+
+// for(let rounds = 3; rounds < 3; rounds++) {} 
 
 for (let i = 0; i < pBoxes.length; i++) { 
     var boxes = pBoxes[i].querySelectorAll('div');
@@ -36,18 +37,26 @@ for (let i = 0; i < pBoxes.length; i++) {
             checkD('blue');
 
             if (winColor == 'red' || winColor == 'blue') {
-
-                alert(winColor + ' wins');
                 resetBox();
+                counter = 0;
+                if (winColor == 'red') {
+                    redScore++;
+                    document.querySelector('.p1').textContent = ('Player 1 Score: ' + redScore)
+                } else if (winColor == 'blue') {
+                    blueScore++;
+                    document.querySelector('.p2').textContent = ('Player 2 Score: ' + blueScore)
+                }
+                winColor = null;
             } else if (counter >= 9) {
                 alert('tie');
                 resetBox();
+                counter = 0;
             }
         }
     })
 }
 
-
+// function checkBox() {}
 // x check
 function checkX(color) {
     for (let a = 0; a < boxPosition.length; a++) {
@@ -70,6 +79,8 @@ function checkD(color) {
         return (winColor = color);
     }
 }
+
+// function roundEnd() {}
 
 function resetBox() {
     for (let j = 0; j < 9; j++) {
