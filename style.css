@@ -3,6 +3,9 @@ body {
     background-image: url(https://img.freepik.com/premium-photo/abstract-pastel-lavender-white-background-light-minimalist-soft-brush-strokes-paper_145343-1539.jpg?w=2000);
     background-size: cover;
     /* background-repeat: repeat; */
+    font-family: 'DynaPuff', cursive;
+    font-size: 1.6em;
+    color: #AB5DB7;
 }
 
 header {
@@ -12,20 +15,61 @@ header {
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 50px;
+    padding: 0 50px 0 50px;
+}
+
+li {
+    width: 100px;
+    height: 100px;
+}
+
+.p1 {
+    color: tomato;
+}
+.p2 {
+    color: rgb(78, 78, 238);
 }
 
 main {
     display: grid;
-    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20%;
     margin: 0 auto;
     text-align: center;
 }
+
+/* ul .p1 {
+    display: flex;
+    justify-content: center;
+}
+ul .p2 {
+    display: flex;
+    justify-content: center;
+} */
+aside {
+    display: flex;
+    justify-content: center;
+    border-radius: 40px;
+}
+#left {
+    background-color: rgba(255, 99, 71, .20);
+}
+#right {
+    background-color: rgba(36, 175, 214, 0.25);
+
+}
+
 
 div {
     border: 3px outset pink;
     height: 150px;
     width: 150px;
+    border-radius: 20px;
+    transition: transform 250ms, background-color 0.8s;
+}
+div:hover {
+    transform: translateY(-10px);
+    background-color: rgba(128, 128, 128, 0.25);;
 }
 
 section {
@@ -35,7 +79,7 @@ section {
 }
 
 .red {
-    background-image: url(./red_splat.png);
+    background-image: url(img/red_splat.png);
     background-size: cover;
     opacity: .7;
     animation-name: splatt;
@@ -43,11 +87,21 @@ section {
 }
 
 .blue {
-    background-image: url(./blue_splat.png);
+    background-image: url(./img/blue_splat.png);
     background-size: cover;
     opacity: .8;
     animation-name: splatt;
     animation-duration: 0.5s;
+}
+
+.BGred {
+    background-image: url(https://img.freepik.com/free-vector/abstract-ink-splatter-blood-stain-texture-background_1017-33314.jpg?w=2000);
+    background-size: auto;
+}
+.BGblue {
+    background-image: url(https://cdn.wallpapersafari.com/82/91/8GgR3K.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 @keyframes splatt {

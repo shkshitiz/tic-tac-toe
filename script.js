@@ -5,7 +5,7 @@ var boxPosition = []
 
 var counter = 0;
 
-var winSplat = new Audio('zapsplat_cartoon_splat_fart_squelch_80667.mp3');
+var winSplat = new Audio('sfx/zapsplat_cartoon_splat_fart_squelch_80667.mp3');
 
 var win = false;
 
@@ -13,6 +13,9 @@ var winColor;
 
 var redScore = 0;
 var blueScore = 0;
+
+var p1Score = document.querySelector('.p1');
+var p2Score = document.querySelector('.p2');
 
 // for(let rounds = 3; rounds < 3; rounds++) {} 
 
@@ -29,6 +32,7 @@ for (let i = 0; i < pBoxes.length; i++) {
             }
             box.classList.remove('null');
             counter++;
+            turnChange();
             splat();
             checkX('red');
             checkX('blue');
@@ -45,21 +49,21 @@ for (let i = 0; i < pBoxes.length; i++) {
                 counter = 0;
                 if (winColor == 'red') {
                     redScore++;
-                    document.querySelector('.p1').textContent = ('Player 1 Score: ' + redScore)
+                    p1Score.textContent = ('Player 1 Score: ' + redScore)
+                    listScore(winColor)
                 } else if (winColor == 'blue') {
                     blueScore++;
-                    document.querySelector('.p2').textContent = ('Player 2 Score: ' + blueScore)
+                    p2Score.textContent = ('Player 2 Score: ' + blueScore)
+                    listScore(winColor)
                 }
                 winColor = null;
             } else if (counter >= 9) {
-                alert('tie');
+                document.querySelector('h2').textContent = "It's a tie! Player 1's turn"
                 resetBox();
                 counter = 0;
             }
             
             winGame();
-
-            turnChange();
         }
     })
 }
@@ -107,18 +111,47 @@ function turnChange() {
 }
 
 function winGame() {
-    if (redScore == 3 || blueScore == 3) {
+    if (redScore >= 3 || blueScore >= 3) {
         if (redScore == 3) {
-            alert('red wins');
+            document.querySelector('body').className = 'BGred';
+            document.querySelector('h2').textContent = "Player 1 wins!";
         } else {
-            alert('blue wins');
+            document.querySelector('body').className = 'BGblue'
+            document.querySelector('h2').textContent = "Player 2 wins!"
         }
+        splat();
+        splat();
+        splat();
+        splat();
     }
 }
 
 function splat() {
-    var splat = [new Audio('zapsplat_cartoon_squelch_wet_drop_003_47586.mp3'),new Audio('zapsplat_cartoon_squish_squelch_wet_005_14504.mp3'),new Audio('zapsplat_cartoon_squish_squelch_wet_004_14503.mp3')]
+    var splat = [new Audio('sfx/zapsplat_cartoon_squelch_wet_drop_003_47586.mp3'),new Audio('sfx/zapsplat_cartoon_squish_squelch_wet_005_14504.mp3'),new Audio('sfx/zapsplat_cartoon_squish_squelch_wet_004_14503.mp3')]
 
     var randomSplat = Math.floor(Math.random() * splat.length);
     splat[randomSplat].play();
 } 
+
+function listScore(winColor) {
+    var createList = document.createElement('li');
+    var redList = document.querySelector('ul.p1');
+    var blueList = document.querySelector('ul.p2');
+
+    if (winColor == 'red') {
+        redList.appendChild(createList).className = 'red';
+        document.querySelector('h2').textContent = "Player 1 wins! Player 1's turn"
+        // for (let r = 0; r < redList.children.length; r++) {
+        //     redList.children[r].classList.add('red')
+        // }
+    } else if (winColor == 'blue') {
+        blueList.appendChild(createList).className = 'blue';
+        document.querySelector('h2').textContent = "Player 2 wins! Player 1's turn"
+    }
+}
+// function sleep(miliseconds) {
+//     var currentTime = new Date().getTime();
+ 
+//     while (currentTime + miliseconds >= new Date().getTime()) {
+//     }
+//  }
