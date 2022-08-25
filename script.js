@@ -52,6 +52,10 @@ for (let i = 0; i < pBoxes.length; i++) {
                 resetBox();
                 counter = 0;
             }
+            
+            winGame();
+
+            turnChange();
         }
     })
 }
@@ -88,5 +92,22 @@ function resetBox() {
         box.classList.remove('red');
         box.classList.remove('blue');
         box.classList.add('null');
+    }
+}
+
+function turnChange() {
+    if (counter % 2 == 0) {
+        document.querySelector('h2').textContent = "Player 1's turn"} else {
+        document.querySelector('h2').textContent = "Player 2's turn"
+    }
+}
+
+function winGame() {
+    if (redScore == 3 || blueScore == 3) {
+        if (redScore == 3) {
+            alert('red wins');
+        } else {
+            alert('blue wins');
+        }
     }
 }
