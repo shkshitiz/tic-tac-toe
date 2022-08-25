@@ -5,6 +5,8 @@ var boxPosition = []
 
 var counter = 0;
 
+var winSplat = new Audio('zapsplat_cartoon_splat_fart_squelch_80667.mp3');
+
 var win = false;
 
 var winColor;
@@ -27,6 +29,7 @@ for (let i = 0; i < pBoxes.length; i++) {
             }
             box.classList.remove('null');
             counter++;
+            splat();
             checkX('red');
             checkX('blue');
 
@@ -37,6 +40,7 @@ for (let i = 0; i < pBoxes.length; i++) {
             checkD('blue');
 
             if (winColor == 'red' || winColor == 'blue') {
+                winSplat.play();
                 resetBox();
                 counter = 0;
                 if (winColor == 'red') {
@@ -111,3 +115,10 @@ function winGame() {
         }
     }
 }
+
+function splat() {
+    var splat = [new Audio('zapsplat_cartoon_squelch_wet_drop_003_47586.mp3'),new Audio('zapsplat_cartoon_squish_squelch_wet_005_14504.mp3'),new Audio('zapsplat_cartoon_squish_squelch_wet_004_14503.mp3')]
+
+    var randomSplat = Math.floor(Math.random() * splat.length);
+    splat[randomSplat].play();
+} 

@@ -1,7 +1,8 @@
 
 body {
-    background-image: url(./BG_txture.jpeg);
-    background-repeat: repeat;
+    background-image: url(https://img.freepik.com/premium-photo/abstract-pastel-lavender-white-background-light-minimalist-soft-brush-strokes-paper_145343-1539.jpg?w=2000);
+    background-size: cover;
+    /* background-repeat: repeat; */
 }
 
 header {
@@ -11,7 +12,7 @@ header {
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding: 50px;
 }
 
 main {
@@ -22,7 +23,7 @@ main {
 }
 
 div {
-    border: 2px solid black;
+    border: 3px outset pink;
     height: 150px;
     width: 150px;
 }
@@ -37,10 +38,19 @@ section {
     background-image: url(./red_splat.png);
     background-size: cover;
     opacity: .7;
+    animation-name: splatt;
+    animation-duration: 0.5s;
 }
 
 .blue {
     background-image: url(./blue_splat.png);
     background-size: cover;
     opacity: .8;
+    animation-name: splatt;
+    animation-duration: 0.5s;
+}
+
+@keyframes splatt {
+    from {background-size: 1px;}
+    to {background-size: cover;}
 }
