@@ -1,23 +1,34 @@
 body {
     text-align: center;
-    background-color: grey;
+    background-image: url(./BG_txture.jpeg);
+    background-repeat: repeat;
+}
+
+main {
+    border: 3px solid red;
+    margin: 0 5em;
+
 }
 
 div {
-    border: 2px solid white;
-    height: 100px;
-    width: 100px;
+    border: 2px solid black;
+    height: 10em;
+    width: 10em;
 }
 
 section {
-    width: 300px;
+    width: 450px;
     display: flex;
+    border: 3px solid white;
 }
 
 .red {
-    background-color: red;
+    background-image: url(./red_splat.png);
+    background-size: cover;
+    opacity: .7;
 }
 
 .blue {
-    background-color: blue;
+    background-image: url(./blue_splat.png);
+    background-size: cover;
 }
