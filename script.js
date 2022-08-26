@@ -120,8 +120,9 @@ function winGame() {
             document.querySelector('h2').textContent = "Player 2 wins!"
         }
         splat();
+        winSplat.play();
         splat();
-        splat();
+        winSplat.play();
         splat();
     }
 }
@@ -140,13 +141,13 @@ function listScore(winColor) {
 
     if (winColor == 'red') {
         redList.appendChild(createList).className = 'red';
-        document.querySelector('h2').textContent = "Player 1 wins! Player 1's turn"
+        document.querySelector('h2').textContent = "Player 1 splats! Player 1's turn"
         // for (let r = 0; r < redList.children.length; r++) {
         //     redList.children[r].classList.add('red')
         // }
     } else if (winColor == 'blue') {
         blueList.appendChild(createList).className = 'blue';
-        document.querySelector('h2').textContent = "Player 2 wins! Player 1's turn"
+        document.querySelector('h2').textContent = "Player 2 splats! Player 1's turn"
     }
 }
 // function sleep(miliseconds) {
